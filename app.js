@@ -5,8 +5,19 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var nunjucks = require('nunjucks')
 
 var app = express();
+
+
+nunjucks.configure('views', {
+    express: app,
+    autoescape: true
+});
+
+
+
+app.set('view engine', 'html');
 
 app.use(logger('dev'));
 app.use(express.json());
